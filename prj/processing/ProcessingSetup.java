@@ -9,7 +9,7 @@ public class ProcessingSetup extends PApplet {
     private int lastUpdate;
     @Override
     public void settings() {
-        size(900, 900);
+        size(1200, 900);
     }
     @Override
     public void setup() {
@@ -43,7 +43,8 @@ public class ProcessingSetup extends PApplet {
     public static void main(String[] args) {
         //app =  new TestCA();
         //app= new TestMajorityCA();
-        app= new TestTerrainApp();
+        //app= new TestTerrainApp();
+        app= new TestEcosystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

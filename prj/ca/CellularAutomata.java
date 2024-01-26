@@ -1,6 +1,6 @@
 package prj.ca;
 
-import prj.tools.SubPlot;
+import prj.tools.*;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -66,7 +66,7 @@ public class CellularAutomata {
             }
         }
     }
-/*
+
     public void initRandomCustom(double[] pmf) {
         CustomRandomGenerator crg = new CustomRandomGenerator(pmf);
         for (int i = 0; i < nrows; i++) {
@@ -75,7 +75,7 @@ public class CellularAutomata {
             }
         }
     }
-*/
+
     public PVector getCenterCell(int row, int col) {
         float x = (col + 0.5f) * cellWidth;
         float y = (row + 0.5f) * cellHeight;
