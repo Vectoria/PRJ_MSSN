@@ -13,8 +13,8 @@ public class Prey extends Animal {
         this.plt=plt;
         energy=WorldConstants.INI_PREY_ENERGY;
     }
-    public Prey(Prey prey, PApplet parent, SubPlot plt){
-        super(prey,parent,plt);
+    public Prey(Prey prey,boolean mutate, PApplet parent, SubPlot plt){
+        super(prey,mutate,parent,plt);
         this.parent=parent;
         this.plt=plt;
         energy=WorldConstants.INI_PREY_ENERGY;
@@ -30,11 +30,12 @@ public class Prey extends Animal {
     }
 
     @Override
-    public Animal reproduce() {
+    public Animal reproduce(boolean mutate) {
         Animal child=null;
         if(energy>WorldConstants.PREY_ENERGY_TO_REPRODUCE){
-            energy-= WorldConstants.INI_PREY_ENERGY;
-            child=new Prey(this,parent,plt);
+            energy-=WorldConstants.INI_PREY_ENERGY;
+            child=new Prey(this,mutate, parent,plt);
+            if(mutate) child.mutateBehaviors();
         }
         return child;
     }

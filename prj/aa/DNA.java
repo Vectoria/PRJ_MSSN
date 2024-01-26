@@ -21,7 +21,7 @@ public class DNA {
         //visao
         visionDistance = random(1.5f, 2.5f);
         visionSafeDistance = 0.25f * visionDistance;
-        visionAngle = (float) Math.PI *0.2f;
+        visionAngle = (float) Math.PI *0.3f;
         deltaTPursuit = random(0.5f, 1f);
         radiusArrive = random(3, 5);
         //Wander
@@ -29,7 +29,7 @@ public class DNA {
         radiusWander = random(1f, 3f);
         deltaPhiWander = (float) Math.PI / 8;
     }
-    public DNA(DNA dna){
+    public DNA(DNA dna, boolean mutate){
         maxForce=dna.maxForce;
         maxSpeed=dna.maxSpeed;
 
@@ -43,6 +43,13 @@ public class DNA {
         deltaTWander=dna.deltaTWander;
         deltaPhiWander=dna.deltaPhiWander;
         radiusWander=dna.radiusWander;
+
+        if(mutate) mutate();
+    }
+
+    private void mutate(){
+        maxSpeed+= random(-0.2f,0.2f);
+        maxSpeed=Math.max(0,maxSpeed);
     }
    /* public float getRndMaxSpeed(){
         return  PSControl.getRnd(maxSpeed[0],maxSpeed[1]);

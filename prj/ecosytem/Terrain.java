@@ -1,8 +1,12 @@
 package prj.ecosytem;
 
+import prj.aa.Body;
 import prj.ca.MajorityCA;
 import prj.tools.SubPlot;
 import processing.core.PApplet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Terrain extends MajorityCA {
     public Terrain(PApplet p, SubPlot plt) {
@@ -27,5 +31,18 @@ public class Terrain extends MajorityCA {
                 ((Patch)cells[i][j]).regenerate();
             }
         }
+    }
+
+    public List<Body> getObstacles() {
+        List<Body> bodies = new ArrayList<Body>();
+        for (int i=0; i < nrows; i++) {
+            for (int j=0; j < ncols; j++) {
+                if ((cells[i][j].getState() == WorldConstants.PatchType.OBSTACLE.ordinal())) {
+                    Body b = new Body(this.getCenterCell(i,j)); // Poe um Pvector no meio da celula que seja obstaculo
+                    bodies.add(b);
+                }
+            }
+        }
+        return bodies;
     }
 }

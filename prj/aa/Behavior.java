@@ -1,7 +1,7 @@
 package prj.aa;
 
 public abstract class Behavior implements IBehavior {
-    private float weight;
+    protected float weight;
 
     public Behavior(float weight) {
         this.weight = weight;

@@ -45,6 +45,7 @@ public class ProcessingSetup extends PApplet {
         //app= new TestMajorityCA();
         //app= new TestTerrainApp();
         app= new TestEcosystemApp();
+        //app= new TestObstaclesApp();
         PApplet.main(ProcessingSetup.class);
     }
 }
