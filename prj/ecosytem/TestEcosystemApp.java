@@ -22,6 +22,7 @@ public class TestEcosystemApp  implements IProcessingApp {
     private TimeGraph tg1,tg2,tg3;
     private Terrain terrain;
     private PopulationOvelhas populationOvelhas;
+    private PopulationLobos populationLobos;
     private float timer, updateGraphTime;
     private float intervalUpdate=1;
 
@@ -42,6 +43,8 @@ public class TestEcosystemApp  implements IProcessingApp {
 
         for (int i = 0; i < 2; i++) terrain.majorityRule();
         populationOvelhas = new PopulationOvelhas(p, plt, terrain);
+        populationLobos= new PopulationLobos(p,plt,terrain,populationOvelhas);
+
 
         timer=0;
         updateGraphTime =timer+ intervalUpdate;
@@ -54,9 +57,11 @@ public class TestEcosystemApp  implements IProcessingApp {
 
         terrain.regenerate();
         populationOvelhas.update(dt, terrain);
+        populationLobos.update(dt,terrain);
 
         terrain.display(p);
         populationOvelhas.display(p, plt);
+        populationLobos.display(p,plt);
 
         if (timer > updateGraphTime) {
             System.out.println(String.format("Time = %ds", (int) timer));
