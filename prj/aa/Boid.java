@@ -15,21 +15,13 @@ public class Boid extends Body {
     private float sumWeights;
     protected DNA dna;
     protected Eye eye;
-    private SubPlot plt;
     private PShape shape;
-
-    public List<Behavior> getBehaviors() {
-        return behaviors;
-    }
-
     protected List<Behavior> behaviors;
-
 
     protected Boid(PVector pos, float mass, float radius, int color, PApplet p, SubPlot plt) {
         super(pos, new PVector(), mass, radius, color);
         dna = new DNA();
         behaviors = new ArrayList<Behavior>();
-        this.plt = plt;
         window = plt.getWindow();
         setShape(p, plt);
     }
@@ -72,6 +64,10 @@ public class Boid extends Body {
         if (behaviors.contains(behavior))
             behaviors.remove(behavior);
         updateSumWeights();
+    }
+
+    public List<Behavior> getBehaviors() {
+        return behaviors;
     }
 
     public void applyBehavior(int i, float dt) {

@@ -23,16 +23,7 @@ public abstract class Animal extends Boid implements IAnimal  {
         dna = new DNA(a.dna, mutate);
     }
 
-    @Override
-    public Animal reproduce(boolean mutate) {
 
-        return null;
-    }
-
-    @Override
-    public void eat(Terrain terrain) {
-
-    }
 
     @Override
     public void energy_consumption(float dt, Terrain terrain) {

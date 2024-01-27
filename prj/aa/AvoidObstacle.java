@@ -10,7 +10,7 @@ public class AvoidObstacle extends Behavior{
     @Override
     public PVector getDesiredVelocity(Boid me) {
         float s = hasObstacle(me);
-        if (s==0) return me.getVel();
+        if (s==0) return me.getVel().copy();
         PVector vd = new PVector(me.getVel().y, -me.getVel().x);
         if (s>0) vd.mult(-1);
         return vd;
