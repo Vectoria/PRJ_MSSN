@@ -4,7 +4,7 @@ package prj.aa;
 import processing.core.PVector;
 
 public class Mover {
-    protected PVector pos;
+    public PVector pos;
     protected PVector vel;
     protected PVector acc;
     protected float mass;

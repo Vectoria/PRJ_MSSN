@@ -8,7 +8,7 @@ public class TestObstaclesApp  implements IProcessingApp {
     private float[] viewport = { 0f, 0f, 1f, 1f };
     private SubPlot plt;
     private Terrain terrain;
-    private Population population;
+    private PopulationOvelhas populationOvelhas;
 
     @Override
     public void setup(PApplet p) {
@@ -17,18 +17,18 @@ public class TestObstaclesApp  implements IProcessingApp {
         terrain.setStateColors(getColors(p));
         terrain.initRandomCustom(WorldConstants.PATCH_TYPE_PROB);
         for (int i = 0; i < 2; i++) terrain.majorityRule();
-        population = new Population(p, plt, terrain);
+        populationOvelhas = new PopulationOvelhas(p, plt, terrain);
     }
 
     @Override
     public void draw(PApplet p, float dt) {
         terrain.regenerate();
-        population.update(dt, terrain);
+        populationOvelhas.update(dt, terrain);
 
         terrain.display(p);
-        population.display(p, plt);
+        populationOvelhas.display(p, plt);
 
-     //   System.out.println("numAnimals = " + population.getNumAnimals());
+     //   System.out.println("numAnimals = " + populationOvelhas.getNumAnimals());
     }
 
     private int[] getColors(PApplet p) {

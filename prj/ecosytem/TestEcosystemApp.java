@@ -21,7 +21,7 @@ public class TestEcosystemApp  implements IProcessingApp {
     private SubPlot plt, pltGraph1, pltGraph2, pltGraph3;
     private TimeGraph tg1,tg2,tg3;
     private Terrain terrain;
-    private Population population;
+    private PopulationOvelhas populationOvelhas;
     private float timer, updateGraphTime;
     private float intervalUpdate=1;
 
@@ -41,7 +41,7 @@ public class TestEcosystemApp  implements IProcessingApp {
         terrain.initRandomCustom(WorldConstants.PATCH_TYPE_PROB);
 
         for (int i = 0; i < 2; i++) terrain.majorityRule();
-        population = new Population(p, plt, terrain);
+        populationOvelhas = new PopulationOvelhas(p, plt, terrain);
 
         timer=0;
         updateGraphTime =timer+ intervalUpdate;
@@ -53,26 +53,26 @@ public class TestEcosystemApp  implements IProcessingApp {
 
 
         terrain.regenerate();
-        population.update(dt, terrain);
+        populationOvelhas.update(dt, terrain);
 
         terrain.display(p);
-        population.display(p, plt);
+        populationOvelhas.display(p, plt);
 
         if (timer > updateGraphTime) {
             System.out.println(String.format("Time = %ds", (int) timer));
-            System.out.println("numAnimais = " + population.getNumAnimals());
-            System.out.println("MeanMaxSpeed = "+population.getMeanMaxSpeed());
-            System.out.println("StdMaxSpeed = "+population.getStdMaxSpeed());
-            System.out.println("meanWeightWander = "+population.getMeanWeights()[0]+ " meanWeightAvoid = " + population.getMeanWeights()[1]);
+            System.out.println("numAnimais = " + populationOvelhas.getNumAnimals());
+            System.out.println("MeanMaxSpeed = "+ populationOvelhas.getMeanMaxSpeed());
+            System.out.println("StdMaxSpeed = "+ populationOvelhas.getStdMaxSpeed());
+            System.out.println("meanWeightWander = "+ populationOvelhas.getMeanWeights()[0]+ " meanWeightAvoid = " + populationOvelhas.getMeanWeights()[1]);
             System.out.println("");
 
-            tg1.plot(timer, population.getNumAnimals());
-            tg2.plot(timer, population.getMeanMaxSpeed());
-            tg3.plot(timer, population.getStdMaxSpeed());
+            tg1.plot(timer, populationOvelhas.getNumAnimals());
+            tg2.plot(timer, populationOvelhas.getMeanMaxSpeed());
+            tg3.plot(timer, populationOvelhas.getStdMaxSpeed());
 
             updateGraphTime = timer + intervalUpdate;
         }
-      //  System.out.println("numAnimals = " + population.getNumAnimals());
+      //  System.out.println("numAnimals = " + populationOvelhas.getNumAnimals());
     }
 
     private int[] getColors(PApplet p) {
@@ -86,9 +86,9 @@ public class TestEcosystemApp  implements IProcessingApp {
     public void mousePressed(PApplet p) {
         winGraph1[0]= timer;
         winGraph1[1]=timer+timeDuration;
-        winGraph1[3]= 2*population.getNumAnimals();
+        winGraph1[3]= 2* populationOvelhas.getNumAnimals();
         pltGraph1=new SubPlot(winGraph1,viewGraph1,p.width,p.height);
-        tg1= new TimeGraph(p,pltGraph1,p.color(255,0,0),population.getNumAnimals());
+        tg1= new TimeGraph(p,pltGraph1,p.color(255,0,0), populationOvelhas.getNumAnimals());
 
         winGraph2[0]= timer;
         winGraph2[1]=timer+timeDuration;
