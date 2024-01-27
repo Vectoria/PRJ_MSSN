@@ -12,7 +12,7 @@ public class WorldConstants {
     public static enum PatchType {
         EMPTY, OBSTACLE, FERTILE, FOOD  //lama
     }
-    public final static double[] PATCH_TYPE_PROB={0.f,0.2f,0.f,0.8f};
+    public final static double[] PATCH_TYPE_PROB={0.f,0.3f,0.f,0.7f};
     public final static int NSTATES = PatchType.values().length;
     public static int[][] TERRAIN_COLORS ={
             {250,200,60}, {160,30,70}, {200,200,60}, {40,200,20}
@@ -34,7 +34,7 @@ public class WorldConstants {
 
     public final static float LOBO_SIZE = .3f;
     public final static float LOBO_MASS = 1f;
-    public final static int INI_LOBO_POPULATION = 200;
+    public final static int INI_LOBO_POPULATION = 20;
     public final static float INI_LOBO_ENERGY = 14f;
     public final static float LOBO_ENERGY_TO_REPRODUCE = 25f;
     public final static float ENERGY_FROM_HUNT = 12f;

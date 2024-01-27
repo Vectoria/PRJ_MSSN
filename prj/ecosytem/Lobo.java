@@ -1,20 +1,33 @@
 package prj.ecosytem;
 
+import prj.aa.*;
 import prj.tools.SubPlot;
 import processing.core.PApplet;
 import processing.core.PVector;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Lobo extends Animal{
 
     PopulationOvelhas pO;
     private PApplet parent;
     private SubPlot plt;
+    private Boid alvo;
+    private List<Body> allTrackingBodies;
     public Lobo(PVector pos, float mass, float radius, int color, PApplet parent, SubPlot plt, PopulationOvelhas pO) {
         super(pos,mass,radius,color,parent,plt);
         this.parent=parent;
         this.plt=plt;
         energy=WorldConstants.INI_LOBO_ENERGY;
         this.pO=pO;
+        allTrackingBodies = new ArrayList<Body>();
+        alvo= pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals()));
+        allTrackingBodies.add(alvo);
+        addBehavior(new Wander(1));
+        addBehavior(new Arrive(2));
+        Eye eye=new Eye(this,allTrackingBodies);
+        setEye(eye);
     }
     public Lobo(Lobo prey,boolean mutate, PApplet parent, SubPlot plt,PopulationOvelhas pO){
         super(prey,mutate,parent,plt);
@@ -22,6 +35,14 @@ public class Lobo extends Animal{
         this.plt=plt;
         this.pO=pO;
         energy=WorldConstants.INI_LOBO_ENERGY;
+        allTrackingBodies = new ArrayList<Body>();
+        alvo= pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals()));
+        allTrackingBodies.add(alvo);
+        addBehavior(new Wander(1));
+        addBehavior(new Arrive(2));
+        Eye eye=new Eye(this,allTrackingBodies);
+        setEye(eye);
+        allTrackingBodies.clear();
     }
 
 
@@ -42,6 +63,9 @@ public class Lobo extends Animal{
             if (PVector.dist(this.pos, prey.pos) <= 0.3) {
                 energy += WorldConstants.ENERGY_FROM_HUNT;
                 prey.energy = 0;
+                allTrackingBodies.add(pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals())));
+                setEye(new Eye(this, allTrackingBodies));
+                allTrackingBodies.clear();
             }
         }
     }

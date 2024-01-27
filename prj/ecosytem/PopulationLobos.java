@@ -10,9 +10,10 @@ import java.util.List;
 
 public class PopulationLobos {
     private List<Animal> allAnimals;
-
+    private List<Body> allTrackingBodies;
     private boolean mutate=true;
     private double[] window;
+    private Boid alvo;
 
     public PopulationLobos(PApplet parent, SubPlot plt, Terrain terrain, PopulationOvelhas pO){
         window=plt.getWindow();
@@ -25,11 +26,14 @@ public class PopulationLobos {
             int color = parent.color(WorldConstants.LOBO_COLOR[0], WorldConstants.LOBO_COLOR[1], WorldConstants.LOBO_COLOR[2]);
             Animal a = new Lobo(pos, WorldConstants.LOBO_MASS, WorldConstants.LOBO_SIZE, color, parent, plt,pO);
 
-            a.addBehavior(new Wander(1));
-            a.addBehavior(new AvoidObstacle(0));
-       //     a.addBehavior(new Arrive(2));
-            Eye eye=new Eye(a,obstacles);
-            a.setEye(eye);
+         //   a.addBehavior(new Wander(1));
+         //   a.addBehavior(new AvoidObstacle(0));
+           // allTrackingBodies = new ArrayList<Body>();
+           // alvo= pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals()));
+           // allTrackingBodies.add(alvo);
+         //   a.addBehavior(new Arrive(2));
+          //  Eye eye=new Eye(a,allTrackingBodies);
+          //  a.setEye(eye);
             allAnimals.add(a);
         }
     }
