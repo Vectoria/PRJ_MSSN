@@ -6,14 +6,14 @@ import processing.core.PApplet;
 
 public class TestEcosystemApp  implements IProcessingApp {
     private float timeDuration=60;
-    private float refPopulation=720;
-    private float refMeanMaxSpeed=2f;
-    private float refStdMaxSpeed=0.2f;
+    private float refPopulation1=720;
+    private float refPopulation2 =720;
+    private float refPopulation3 =20;
     private float[] viewport = { 0f, 0f, 0.7f, 1f };
 
-    private double[] winGraph1={0,timeDuration,0,2*refPopulation};
-    private double[] winGraph2={0,timeDuration,0,2*refMeanMaxSpeed};
-    private double[] winGraph3={0,timeDuration,0,2*refStdMaxSpeed};
+    private double[] winGraph1={0,timeDuration,0,2*refPopulation1};
+    private double[] winGraph2={0,timeDuration,0,2* refPopulation2};
+    private double[] winGraph3={0,timeDuration,0,2* refPopulation3};
 
     private float[] viewGraph1= {.71f, .04f, .28f, .28f};
     private float[] viewGraph2= {.71f, .37f, .28f, .28f};
@@ -34,9 +34,9 @@ public class TestEcosystemApp  implements IProcessingApp {
         pltGraph2=new SubPlot(winGraph2,viewGraph2,p.width,p.height);
         pltGraph3=new SubPlot(winGraph3,viewGraph3,p.width,p.height);
 
-        tg1= new TimeGraph(p,pltGraph1, p.color(255,0,0),refPopulation);
-        tg2= new TimeGraph(p,pltGraph2, p.color(255,0,0),refMeanMaxSpeed);
-        tg3= new TimeGraph(p,pltGraph3, p.color(255,0,0),refStdMaxSpeed);
+        tg1= new TimeGraph(p,pltGraph1, p.color(255,0,0),refPopulation1);
+        tg2= new TimeGraph(p,pltGraph2, p.color(255,0,0), refPopulation2);
+        tg3= new TimeGraph(p,pltGraph3, p.color(255,0,0), refPopulation3);
 
         terrain = new Terrain( p, plt);
         terrain.setStateColors(getColors(p));
@@ -78,8 +78,8 @@ public class TestEcosystemApp  implements IProcessingApp {
             System.out.println("");
 
             tg1.plot(timer, populationOvelhas.getNumAnimals());
-            tg2.plot(timer, populationOvelhas.getMeanMaxSpeed());
-            tg3.plot(timer, populationOvelhas.getStdMaxSpeed());
+            tg2.plot(timer, populationOurico.getNumAnimals());
+            tg3.plot(timer, populationLobos.getNumAnimals());
 
             updateGraphTime = timer + intervalUpdate;
         }
@@ -103,11 +103,15 @@ public class TestEcosystemApp  implements IProcessingApp {
 
         winGraph2[0]= timer;
         winGraph2[1]=timer+timeDuration;
-        tg2= new TimeGraph(p,pltGraph2,p.color(255,0,0), refMeanMaxSpeed);
+        winGraph2[3]= 2* populationOurico.getNumAnimals();
+        pltGraph2=new SubPlot(winGraph2,viewGraph2,p.width,p.height);
+        tg2= new TimeGraph(p,pltGraph2,p.color(255,0,0), populationOurico.getNumAnimals());
 
         winGraph3[0]= timer;
         winGraph3[1]=timer+timeDuration;
-        tg3= new TimeGraph(p,pltGraph3,p.color(255,0,0), refStdMaxSpeed);
+        winGraph3[3]=2* populationLobos.getNumAnimals();
+        pltGraph3=new SubPlot(winGraph3,viewGraph3,p.width,p.height);
+        tg3= new TimeGraph(p,pltGraph3,p.color(255,0,0), populationLobos.getNumAnimals());
     }
 
     @Override

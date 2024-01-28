@@ -35,7 +35,7 @@ public class Ourico extends Animal {
         if(energy>WorldConstants.OURICO_ENERGY_TO_REPRODUCE){
             energy-=WorldConstants.INI_OURICO_ENERGY;
             child=new Ourico(this,mutate, parent,plt);
-            if(mutate) child.mutateBehaviors();
+        //    if(mutate) child.mutateBehaviors();
         }
         return child;
     }

@@ -28,8 +28,6 @@ public class WorldConstants {
     public final static float INI_OVELHA_ENERGY = 10f;
     public final static float ENERGY_FROM_PLANT = 4f;
     public final static float OVELHA_ENERGY_TO_REPRODUCE = 25f;
-    //public final static float PREY_LIFESPAN = 100f;
-    //public final static float PREY_ADULT_AGE = PREY_LIFESPAN * 0.6f;
     public static int[] OVELHA_COLOR = {255, 255, 255};
 
     //Lobo
@@ -40,18 +38,14 @@ public class WorldConstants {
     public final static float INI_LOBO_ENERGY = 14f;
     public final static float LOBO_ENERGY_TO_REPRODUCE = 25f;
     public final static float ENERGY_FROM_HUNT = 12f;
-    //public final static float PREY_LIFESPAN = 100f;
-    //public final static float PREY_ADULT_AGE = PREY_LIFESPAN * 0.6f;
     public static int[] LOBO_COLOR = {0, 0, 0};
 
     // Ourico
     public final static float OURICO_SIZE = .2f;
-    public final static float OURICO_MASS = .5f;
-    public final static int INI_OURICO_POPULATION = 20;
-    public final static float INI_OURICO_ENERGY = 5f;
-    public final static float OURICO_ENERGY_TO_REPRODUCE = 17f;
+    public final static float OURICO_MASS = .7f;
+    public final static int INI_OURICO_POPULATION = 10;
+    public final static float INI_OURICO_ENERGY = 8f;
+    public final static float OURICO_ENERGY_TO_REPRODUCE = 19f;
     public final static float DEFENSE_HUNT = -5f;
-    //public final static float PREY_LIFESPAN = 100f;
-    //public final static float PREY_ADULT_AGE = PREY_LIFESPAN * 0.6f;
     public static int[] OURICO_COLOR = {255, 255, 255};
 }
