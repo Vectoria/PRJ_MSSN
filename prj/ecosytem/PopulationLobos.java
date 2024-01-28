@@ -49,6 +49,13 @@ public class PopulationLobos {
         die();
     }
 
+    private void lookAround(){
+        // ordenar targets por distância, ordem crescente
+        // ver se é lava ou sheep
+        // aumentar avoid se for lava
+        // aumentar pursuit se for sheep
+    }
+
     private void move(Terrain terrain, float dt) {
         for (Animal a : allAnimals) a.applyBehaviors(dt);
 
