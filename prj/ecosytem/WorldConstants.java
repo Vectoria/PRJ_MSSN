@@ -20,8 +20,9 @@ public class WorldConstants {
             {250, 200, 60}, {160, 30, 70}, {200, 200, 60}, {101, 210, 244}, {40, 200, 20}
     };
 
+    // mais imagens = mais lag
     public static String[] TERRAIN_PATHS = {
-            null, "data/small_lava.jpg", null, "data/small_water.jpg", null
+            "data/small_empty.png", "data/small_lava.jpg", null, "data/small_water.jpg", null
     };
     public final static float[] REGENERATION_TIME = {10.f, 20.f}; //seconds
 
