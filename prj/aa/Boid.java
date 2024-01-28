@@ -109,7 +109,7 @@ public class Boid extends Body {
     public void mutateBehaviors() {
         for (Behavior behavior : behaviors) {
             if (behavior instanceof AvoidObstacle) {
-                behavior.weight += DNA.random(-0.5f, 0.5f);
+                behavior.weight += DNA.random(-0.2f, 0.5f);
                 behavior.weight = Math.max(0, behavior.weight);
             }
 
@@ -145,13 +145,19 @@ public class Boid extends Body {
 
     //@Override
     public void display(PApplet p, SubPlot plt, PImage img) {
-        p.pushMatrix();
-        float[] pp = plt.getPixelCoord(pos.x, pos.y);
-        p.translate(pp[0], pp[1]);
-        p.rotate(-vel.heading());
-        p.image(img, pp[0], pp[1]);
-        //p.shape(shape);
-        p.popMatrix();
+        if (img != null) {
+            p.pushMatrix();
+            float[] pp = plt.getPixelCoord(pos.x, pos.y);
+            p.image(img, pp[0], pp[1]);
+            p.popMatrix();
+        } else {
+            p.pushMatrix();
+            float[] pp = plt.getPixelCoord(pos.x, pos.y);
+            p.translate(pp[0], pp[1]);
+            p.rotate(-vel.heading());
+            p.shape(shape);
+            p.popMatrix();
+        }
     }
 
 }

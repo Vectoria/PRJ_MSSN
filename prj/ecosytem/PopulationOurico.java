@@ -1,31 +1,34 @@
 package prj.ecosytem;
 
-import prj.aa.*;
-import processing.core.PApplet;
+import prj.aa.AvoidObstacle;
+import prj.aa.Body;
+import prj.aa.Eye;
+import prj.aa.Wander;
 import prj.tools.SubPlot;
+import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopulationOvelhas {
+public class PopulationOurico {
     private List<Animal> allAnimals;
 
     private boolean mutate=true;
     private double[] window;
     private PImage img;
 
-    public PopulationOvelhas(PApplet parent, SubPlot plt, Terrain terrain){
+    public PopulationOurico(PApplet parent, SubPlot plt, Terrain terrain){
         window=plt.getWindow();
         allAnimals=new ArrayList<Animal>();
 
         List<Body> obstacles=terrain.getObstacles();
 
-        for(int i = 0; i<WorldConstants.INI_OVELHA_POPULATION; i++){
+        for(int i = 0; i<WorldConstants.INI_OURICO_POPULATION; i++){
             PVector pos = new PVector(parent.random((float) window[0], (float) window[1]), parent.random((float) window[2], (float) window[3]));
-            int color = parent.color(WorldConstants.OVELHA_COLOR[0], WorldConstants.OVELHA_COLOR[1], WorldConstants.OVELHA_COLOR[2]);
-            Animal a = new Ovelha(pos, WorldConstants.OVELHA_MASS, WorldConstants.OVELHA_SIZE, color, parent, plt);
+            int color = parent.color(WorldConstants.OURICO_COLOR[0], WorldConstants.OURICO_COLOR[1], WorldConstants.OURICO_COLOR[2]);
+            Animal a = new Ovelha(pos, WorldConstants.OURICO_MASS, WorldConstants.OURICO_SIZE, color, parent, plt);
 
             a.addBehavior(new Wander(1));
             a.addBehavior(new AvoidObstacle(0));
@@ -33,7 +36,6 @@ public class PopulationOvelhas {
             a.setEye(eye);
             allAnimals.add(a);
         }
-        img = parent.loadImage("data/small_sheep.png");
     }
     public void update(float dt, Terrain terrain){
         move(terrain,dt);
