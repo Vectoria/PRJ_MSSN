@@ -1,12 +1,15 @@
 package prj.ca;
 
+import prj.ecosytem.WorldConstants;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Cell {
     private int row, col;
     protected int state;
     private Cell[] neighbors;
     protected CellularAutomata ca;
+    private PImage img;
 
     public Cell(CellularAutomata ca, int row, int col){
         this.ca=ca;
@@ -31,10 +34,19 @@ public class Cell {
         return this.state;
     }
 
-    public void display(PApplet p){
+    public void display(PApplet p) {
         p.pushStyle();
-        p.fill(ca.getStateColors()[state]);
-        p.rect(ca.xmin+col*ca.cellWidth, ca.ymin+row*ca.cellHeight, ca.cellWidth, ca.cellHeight);
+        if (WorldConstants.TERRAIN_PATHS[state] == null) img = null;
+        else img = p.loadImage(WorldConstants.TERRAIN_PATHS[state]);
+        if (img != null) {
+            // If there's an image, draw the image in the cell
+            p.image(img, ca.xmin + col * ca.cellWidth, ca.ymin + row * ca.cellHeight, ca.cellWidth, ca.cellHeight);
+        } else {
+            // If no image, fill the cell with a color based on the state
+            p.fill(ca.getStateColors()[state]);
+            p.rect(ca.xmin + col * ca.cellWidth, ca.ymin + row * ca.cellHeight, ca.cellWidth, ca.cellHeight);
+        }
+
         p.popStyle();
     }
 }
