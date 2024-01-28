@@ -27,11 +27,16 @@ public abstract class Animal extends Boid implements IAnimal  {
 
     @Override
     public void energy_consumption(float dt, Terrain terrain) {
-        energy-=dt;
+
         energy-= mass* Math.pow(vel.mag(),2)*dt;
         Patch patch=(Patch) terrain.world2Cell(pos.x,pos.y);
-        if(patch.getState() == WorldConstants.PatchType.OBSTACLE.ordinal())
+        if(patch.getState() == WorldConstants.PatchType.LAVA.ordinal())
             energy-=50*dt;
+        if(patch.getState() == WorldConstants.PatchType.WATER.ordinal())
+            energy-=3*dt;
+        else{
+            energy-=dt;
+        }
     }
 
     @Override
