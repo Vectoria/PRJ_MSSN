@@ -37,7 +37,7 @@ public class Terrain extends MajorityCA {
         List<Body> bodies = new ArrayList<Body>();
         for (int i=0; i < nrows; i++) {
             for (int j=0; j < ncols; j++) {
-                if ((cells[i][j].getState() == WorldConstants.PatchType.OBSTACLE.ordinal())) {
+                if ((cells[i][j].getState() == WorldConstants.PatchType.LAVA.ordinal())) {
                     Body b = new Body(this.getCenterCell(i,j)); // Poe um Pvector no meio da celula que seja obstaculo
                     bodies.add(b);
                 }
