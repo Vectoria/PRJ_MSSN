@@ -3,6 +3,7 @@ package prj.ecosytem;
 import prj.aa.*;
 import prj.tools.SubPlot;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class PopulationLobos {
     private boolean mutate=true;
     private double[] window;
     private Boid alvo;
+    private PImage img;
 
     public PopulationLobos(PApplet parent, SubPlot plt, Terrain terrain, PopulationOvelhas pO){
         window=plt.getWindow();
@@ -36,6 +38,7 @@ public class PopulationLobos {
           //  a.setEye(eye);
             allAnimals.add(a);
         }
+        img = parent.loadImage("data/small_wolf.png");
     }
     public void update(float dt, Terrain terrain){
         move(terrain,dt);
@@ -76,7 +79,7 @@ public class PopulationLobos {
 
     public void display(PApplet p, SubPlot plt){
         for(Animal a: allAnimals){
-            a.display(p,plt);
+            a.display(p,plt, img);
         }
     }
     public int getNumAnimals() {

@@ -19,7 +19,7 @@ public class Population {
 
         List<Body> obstacles=terrain.getObstacles();
 
-        for(int i=0;i<WorldConstants.INI_PREY_POPULATION;i++){
+        /*for(int i=0;i<WorldConstants.INI_PREY_POPULATION;i++){
             PVector pos = new PVector(parent.random((float) window[0], (float) window[1]), parent.random((float) window[2], (float) window[3]));
             int color = parent.color(WorldConstants.PREY_COLOR[0], WorldConstants.PREY_COLOR[1], WorldConstants.PREY_COLOR[2]);
             Animal a = new Prey(pos, WorldConstants.PREY_MASS, WorldConstants.PREY_SIZE, color, parent, plt);
@@ -29,7 +29,7 @@ public class Population {
             Eye eye=new Eye(a,obstacles);
             a.setEye(eye);
             allAnimals.add(a);
-        }
+        }*/
     }
 
     public void update(float dt, Terrain terrain){

@@ -1,9 +1,6 @@
 package prj.aa;
 
-import processing.core.PApplet;
-import processing.core.PConstants;
-import processing.core.PShape;
-import processing.core.PVector;
+import processing.core.*;
 import prj.tools.SubPlot;
 
 import java.util.ArrayList;
@@ -147,12 +144,13 @@ public class Boid extends Body {
     }
 
     //@Override
-    public void display(PApplet p, SubPlot plt) {
+    public void display(PApplet p, SubPlot plt, PImage img) {
         p.pushMatrix();
         float[] pp = plt.getPixelCoord(pos.x, pos.y);
         p.translate(pp[0], pp[1]);
         p.rotate(-vel.heading());
-        p.shape(shape);
+        p.image(img, pp[0], pp[1]);
+        //p.shape(shape);
         p.popMatrix();
     }
 
