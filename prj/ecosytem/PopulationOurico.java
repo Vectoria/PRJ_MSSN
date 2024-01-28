@@ -36,7 +36,7 @@ public class PopulationOurico {
             a.setEye(eye);
             allAnimals.add(a);
         }
-        img = parent.loadImage("data/small_hedgehog.png");
+        img = parent.loadImage(WorldConstants.OURICO_PATH);
     }
     public void update(float dt, Terrain terrain){
         move(terrain,dt);

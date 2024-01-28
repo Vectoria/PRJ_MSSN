@@ -38,7 +38,7 @@ public class PopulationLobos {
             a.setEye(eye);
             allAnimals.add(a);
         }
-        img = parent.loadImage("data/small_wolf.png");
+        img = parent.loadImage(WorldConstants.LOBO_PATH);
     }
 
     public void update(float dt, Terrain terrain) {

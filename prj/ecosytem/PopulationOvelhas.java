@@ -33,7 +33,7 @@ public class PopulationOvelhas {
             a.setEye(eye);
             allAnimals.add(a);
         }
-        img = parent.loadImage("data/small_sheep.png");
+        img = parent.loadImage(WorldConstants.OVELHA_PATH);
     }
     public void update(float dt, Terrain terrain){
         move(terrain,dt);

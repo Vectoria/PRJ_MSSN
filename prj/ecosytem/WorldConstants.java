@@ -29,6 +29,7 @@ public class WorldConstants {
     public final static float ENERGY_FROM_PLANT = 4f;
     public final static float OVELHA_ENERGY_TO_REPRODUCE = 25f;
     public static int[] OVELHA_COLOR = {255, 255, 255};
+    public static String OVELHA_PATH = "data/small_sheep.png";
 
     //Lobo
 
@@ -39,6 +40,7 @@ public class WorldConstants {
     public final static float LOBO_ENERGY_TO_REPRODUCE = 25f;
     public final static float ENERGY_FROM_HUNT = 12f;
     public static int[] LOBO_COLOR = {0, 0, 0};
+    public static String LOBO_PATH = "data/small_wolf.png";
 
     // Ourico
     public final static float OURICO_SIZE = .2f;
@@ -48,4 +50,5 @@ public class WorldConstants {
     public final static float OURICO_ENERGY_TO_REPRODUCE = 19f;
     public final static float DEFENSE_HUNT = -5f;
     public static int[] OURICO_COLOR = {255, 255, 255};
+    public static String OURICO_PATH = "data/small_hedgehog.png";
 }
