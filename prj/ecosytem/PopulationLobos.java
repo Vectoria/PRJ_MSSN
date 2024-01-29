@@ -78,6 +78,7 @@ public class PopulationLobos {
                         behavior.setWeight(1);
                     }
                 }
+
             }
             else{
                 for (Behavior behavior : animal.getBehaviors()) {
@@ -89,6 +90,8 @@ public class PopulationLobos {
                     }
                 }
             }
+            Eye eye = new Eye(animal, allTrackingBodies);
+            animal.setEye(eye);
             if(PVector.dist(target.pos,animal.pos)==0){
                 allTrackingBodies.remove(0);
             }
