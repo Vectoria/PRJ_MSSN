@@ -104,6 +104,55 @@ public class PopulationLobos {
         // aumentar pursuit se for sheep
     }
 
+    private void lookAround(){
+        // ordenar targets por distância, ordem crescente
+        for (Animal animal : allAnimals) {
+            float minDistance = Float.MAX_VALUE; // Initialize with a large value
+
+            for (Body body : allTrackingBodies) {
+                float distance = PVector.dist(animal.pos, body.pos);
+
+                // Update minDistance if a smaller distance is found
+                if (distance < minDistance) {
+                    minDistance = distance;
+                }
+            }
+
+            Collections.sort(allTrackingBodies, Comparator.comparingDouble(body -> PVector.dist(animal.pos, body.pos)));
+            // Sort allTrackingBodies based on distances in ascending order
+            // Collections.sort(allTrackingBodies, Comparator.comparingDouble(Body::getDistanceToAnimal));
+            Body target= allTrackingBodies.get(0);
+            if(target instanceof Boid){
+                for (Behavior behavior : animal.getBehaviors()) {
+                    if (behavior instanceof Arrive) {
+                        behavior.setWeight(4);
+                    }
+                    if (behavior instanceof AvoidObstacle) {
+                        behavior.setWeight(1);
+                    }
+                }
+            }
+            else{
+                for (Behavior behavior : animal.getBehaviors()) {
+                    if (behavior instanceof AvoidObstacle) {
+                        behavior.setWeight(10);
+                    }
+                    if (behavior instanceof Arrive) {
+                        behavior.setWeight(1);
+                    }
+                }
+            }
+            if(PVector.dist(target.pos,animal.pos)==0){
+                allTrackingBodies.remove(0);
+            }
+            System.out.println(target);
+        }
+
+        // ver se é lava ou sheep
+        // aumentar avoid se for lava
+        // aumentar pursuit se for sheep
+    }
+
     private void move(Terrain terrain, float dt) {
         for (Animal a : allAnimals) a.applyBehaviors(dt);
 
