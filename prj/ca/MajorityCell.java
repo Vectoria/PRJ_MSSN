@@ -1,6 +1,7 @@
 package prj.ca;
 
 import prj.tools.Histogram;
+import processing.core.PApplet;
 
 public class MajorityCell extends Cell {
 

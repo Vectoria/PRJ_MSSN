@@ -38,7 +38,7 @@ public class TestEcosystemApp  implements IProcessingApp {
         tg2= new TimeGraph(p,pltGraph2, p.color(255,0,0), refPopulation2);
         tg3= new TimeGraph(p,pltGraph3, p.color(255,0,0), refPopulation3);
 
-        terrain = new Terrain( p, plt);
+        terrain = new Terrain(p, plt);
         terrain.setStateColors(getColors(p));
         terrain.initRandomCustom(WorldConstants.PATCH_TYPE_PROB);
 

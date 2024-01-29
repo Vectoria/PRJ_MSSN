@@ -22,7 +22,8 @@ public class WorldConstants {
 
     // mais imagens = mais lag
     public static String[] TERRAIN_PATHS = {
-            "data/small_empty.png", "data/small_lava.jpg", null, "data/small_water.jpg", null
+            "data/small_empty.png", "data/small_lava.jpg", "data/small_fertile.png", "data/small_water.jpg",
+            "data/small_food.png"
     };
     public final static float[] REGENERATION_TIME = {10.f, 20.f}; //seconds
 

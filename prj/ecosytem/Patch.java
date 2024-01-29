@@ -15,12 +15,15 @@ public class Patch extends MajorityCell {
     public void setFertile() {
         state = WorldConstants.PatchType.FERTILE.ordinal();
         eatenTime = System.currentTimeMillis();
+        setImg(this.parent);
     }
 
     public void regenerate() {
         if (state == WorldConstants.PatchType.FERTILE.ordinal()
-                && System.currentTimeMillis() > (eatenTime + timeToGrow))
+                && System.currentTimeMillis() > (eatenTime + timeToGrow)) {
             state = WorldConstants.PatchType.FOOD.ordinal();
+            setImg(this.parent);
+        }
     }
 }
 
