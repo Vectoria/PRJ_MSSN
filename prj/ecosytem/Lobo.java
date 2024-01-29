@@ -73,6 +73,7 @@ public class Lobo extends Animal{
                 allTrackingBodies.clear();*/
             }
         }
+
         for (Animal prey : populationOurico.getAllAnimals()) {
             if (PVector.dist(this.pos, prey.pos) <= 0.3) {
                 energy += WorldConstants.DEFENSE_HUNT;

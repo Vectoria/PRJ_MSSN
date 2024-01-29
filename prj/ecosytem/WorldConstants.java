@@ -54,6 +54,7 @@ public class WorldConstants {
     public final static int INI_OURICO_POPULATION = 10;
     public final static float INI_OURICO_ENERGY = 8f;
     public final static float OURICO_ENERGY_TO_REPRODUCE = 19f;
+    public final static float OVERDOSE_ENERGY = 22f;
     public final static float DEFENSE_HUNT = -5f;
     public static int[] OURICO_COLOR = {255, 255, 255};
     public static String OURICO_PATH = "data/small_hedgehog.png";

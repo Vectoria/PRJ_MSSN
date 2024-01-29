@@ -28,7 +28,7 @@ public class PopulationOurico {
         for(int i = 0; i<WorldConstants.INI_OURICO_POPULATION; i++){
             PVector pos = new PVector(parent.random((float) window[0], (float) window[1]), parent.random((float) window[2], (float) window[3]));
             int color = parent.color(WorldConstants.OURICO_COLOR[0], WorldConstants.OURICO_COLOR[1], WorldConstants.OURICO_COLOR[2]);
-            Animal a = new Ovelha(pos, WorldConstants.OURICO_MASS, WorldConstants.OURICO_SIZE, color, parent, plt);
+            Animal a = new Ourico(pos, WorldConstants.OURICO_MASS, WorldConstants.OURICO_SIZE, color, parent, plt);
 
             a.addBehavior(new Wander(1));
             a.addBehavior(new AvoidObstacle(0));
