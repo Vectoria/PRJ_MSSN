@@ -49,7 +49,6 @@ public class PopulationLobos {
         energy_consumption(dt, terrain);
         reproduce(mutate);
         die();
-        lookAround();
     }
 
     private void lookAround(){
@@ -88,12 +87,15 @@ public class PopulationLobos {
                     }
                 }
             }
+
             Eye eye = new Eye(animal, allTrackingBodies);
             animal.setEye(eye);
+
             if(PVector.dist(target.pos,animal.pos)==0){
                 allTrackingBodies.remove(0);
             }
            // System.out.println(target);
+
         }
 
         // ver se é lava ou sheep
