@@ -49,6 +49,7 @@ public class PopulationLobos {
         energy_consumption(dt, terrain);
         reproduce(mutate);
         die();
+        lookAround();
     }
 
     private void lookAround(){
