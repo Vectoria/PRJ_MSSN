@@ -78,7 +78,10 @@ public class PopulationLobos {
                         behavior.setWeight(1);
                     }
                 }
+<<<<<<<<< Temporary merge branch 1
+=========
 
+>>>>>>>>> Temporary merge branch 2
             }
             else{
                 for (Behavior behavior : animal.getBehaviors()) {
@@ -90,8 +93,11 @@ public class PopulationLobos {
                     }
                 }
             }
+<<<<<<<<< Temporary merge branch 1
+=========
             Eye eye = new Eye(animal, allTrackingBodies);
             animal.setEye(eye);
+>>>>>>>>> Temporary merge branch 2
             if(PVector.dist(target.pos,animal.pos)==0){
                 allTrackingBodies.remove(0);
             }
