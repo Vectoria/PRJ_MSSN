@@ -16,11 +16,9 @@ public class CellularAutomata {
     protected float cellWidth, cellHeight; // Pixels
     protected float xmin, ymin;
     private SubPlot plt;
-<<<<<<<<< Temporary merge branch 1
-    private PApplet parent;
-=========
+
     protected PApplet parent;
->>>>>>>>> Temporary merge branch 2
+
 
     public CellularAutomata(PApplet p, SubPlot plt, int nrows, int ncols, int nStates, int radiusNeigh) {
         this.parent = p;
@@ -68,11 +66,9 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState((int) ((nStates) * Math.random()));
-<<<<<<<<< Temporary merge branch 1
-                cells[i][j].setImg(this.parent);
-=========
+
             //    cells[i][j].setImg(this.parent);
->>>>>>>>> Temporary merge branch 2
+
             }
         }
     }
@@ -82,11 +78,9 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState(crg.getRandomClass());
-<<<<<<<<< Temporary merge branch 1
-                cells[i][j].setImg(this.parent);
-=========
+
              //   cells[i][j].setImg(this.parent);
->>>>>>>>> Temporary merge branch 2
+
             }
         }
     }

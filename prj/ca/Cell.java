@@ -56,10 +56,7 @@ public class Cell {
         if (img != null) {
             // If there's an image, draw the image in the cell
             p.image(img, ca.xmin + col * ca.cellWidth, ca.ymin + row * ca.cellHeight, ca.cellWidth, ca.cellHeight);
-<<<<<<<<< Temporary merge branch 1
-=========
 
->>>>>>>>> Temporary merge branch 2
         } else {
             // If no image, fill the cell with a color based on the state
             p.fill(ca.getStateColors()[state]);

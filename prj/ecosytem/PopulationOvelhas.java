@@ -36,7 +36,7 @@ public class PopulationOvelhas {
         img = parent.loadImage(WorldConstants.OVELHA_PATH);
     }
     public void update(float dt, Terrain terrain){
-        System.out.println(terrain.getObstacles().get(0));
+        //System.out.println(terrain.getObstacles().get(0));
         move(terrain,dt);
         eat(terrain);
         energy_consumption(dt,terrain);

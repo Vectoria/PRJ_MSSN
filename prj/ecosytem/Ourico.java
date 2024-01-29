@@ -25,7 +25,7 @@ public class Ourico extends Animal {
         Patch patch= (Patch) terrain.world2Cell(pos.x,pos.y);
         if (patch.getState() == WorldConstants.PatchType.FOOD.ordinal()) {
             energy += WorldConstants.ENERGY_FROM_PLANT;
-            patch.setFertile();
+            patch.setFertile(this.parent);
         }
     }
 
@@ -35,7 +35,7 @@ public class Ourico extends Animal {
         if(energy>WorldConstants.OURICO_ENERGY_TO_REPRODUCE){
             energy-=WorldConstants.INI_OURICO_ENERGY;
             child=new Ourico(this,mutate, parent,plt);
-        //    if(mutate) child.mutateBehaviors();
+            if(mutate) child.mutateBehaviors();
         }
         return child;
     }
@@ -47,6 +47,6 @@ public class Ourico extends Animal {
 
     @Override
     public boolean die() {
-        return super.die();
+        return super.die() || this.energy> WorldConstants.OVERDOSE_ENERGY;
     }
 }
