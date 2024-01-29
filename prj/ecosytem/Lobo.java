@@ -86,6 +86,7 @@ public class Lobo extends Animal{
     }
 
 
+
     @Override
     public void energy_consumption(float dt, Terrain terrain) {
         super.energy_consumption(dt, terrain);
