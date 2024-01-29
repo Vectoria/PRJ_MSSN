@@ -27,6 +27,8 @@ public class TestEcosystemApp  implements IProcessingApp {
     private float timer, updateGraphTime;
     private float intervalUpdate=1;
 
+    private PApplet parent;
+
     @Override
     public void setup(PApplet p) {
         plt = new SubPlot(WorldConstants.WINDOW, viewport, p.width, p.height);
@@ -50,6 +52,8 @@ public class TestEcosystemApp  implements IProcessingApp {
 
         timer=0;
         updateGraphTime =timer+ intervalUpdate;
+
+        this.parent = p;
     }
 
     @Override
@@ -59,7 +63,7 @@ public class TestEcosystemApp  implements IProcessingApp {
         timer+=dt;
 
 
-        terrain.regenerate();
+        terrain.regenerate(this.parent);
         populationOvelhas.update(dt, terrain);
         populationLobos.update(dt,terrain);
         populationOurico.update(dt,terrain);
