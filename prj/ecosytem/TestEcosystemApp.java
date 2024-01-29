@@ -87,7 +87,7 @@ public class TestEcosystemApp  implements IProcessingApp {
 
             updateGraphTime = timer + intervalUpdate;
         }
-      //  System.out.println("numAnimals = " + populationOvelhas.getNumAnimals());
+        //  System.out.println("numAnimals = " + populationOvelhas.getNumAnimals());
     }
 
     private int[] getColors(PApplet p) {
@@ -99,23 +99,32 @@ public class TestEcosystemApp  implements IProcessingApp {
 
     @Override
     public void mousePressed(PApplet p) {
-        winGraph1[0]= timer;
-        winGraph1[1]=timer+timeDuration;
-        winGraph1[3]= 2* populationOvelhas.getNumAnimals();
-        pltGraph1=new SubPlot(winGraph1,viewGraph1,p.width,p.height);
-        tg1= new TimeGraph(p,pltGraph1,p.color(255,0,0), populationOvelhas.getNumAnimals());
+        if (p.mouseButton == PApplet.LEFT) {
+            winGraph1[0]= timer;
+            winGraph1[1]=timer+timeDuration;
+            winGraph1[3]= 2* populationOvelhas.getNumAnimals();
+            pltGraph1=new SubPlot(winGraph1,viewGraph1,p.width,p.height);
+            tg1= new TimeGraph(p,pltGraph1,p.color(255,0,0), populationOvelhas.getNumAnimals());
 
-        winGraph2[0]= timer;
-        winGraph2[1]=timer+timeDuration;
-        winGraph2[3]= 2* populationOurico.getNumAnimals();
-        pltGraph2=new SubPlot(winGraph2,viewGraph2,p.width,p.height);
-        tg2= new TimeGraph(p,pltGraph2,p.color(255,0,0), populationOurico.getNumAnimals());
+            winGraph2[0]= timer;
+            winGraph2[1]=timer+timeDuration;
+            winGraph2[3]= 2* populationOurico.getNumAnimals();
+            pltGraph2=new SubPlot(winGraph2,viewGraph2,p.width,p.height);
+            tg2= new TimeGraph(p,pltGraph2,p.color(255,0,0), populationOurico.getNumAnimals());
 
-        winGraph3[0]= timer;
-        winGraph3[1]=timer+timeDuration;
-        winGraph3[3]=2* populationLobos.getNumAnimals();
-        pltGraph3=new SubPlot(winGraph3,viewGraph3,p.width,p.height);
-        tg3= new TimeGraph(p,pltGraph3,p.color(255,0,0), populationLobos.getNumAnimals());
+            winGraph3[0]= timer;
+            winGraph3[1]=timer+timeDuration;
+            winGraph3[3]=2* populationLobos.getNumAnimals();
+            pltGraph3=new SubPlot(winGraph3,viewGraph3,p.width,p.height);
+            tg3= new TimeGraph(p,pltGraph3,p.color(255,0,0), populationLobos.getNumAnimals());
+        } else if (p.mouseButton == PApplet.RIGHT) {
+
+            populationOvelhas = new PopulationOvelhas(p, plt, terrain);
+
+            populationOurico=new PopulationOurico(p,plt,terrain);
+            populationLobos= new PopulationLobos(p,plt,terrain,populationOvelhas, populationOurico);
+        }
+
     }
 
     @Override
