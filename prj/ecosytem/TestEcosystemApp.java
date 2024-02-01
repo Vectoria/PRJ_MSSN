@@ -23,7 +23,9 @@ public class TestEcosystemApp  implements IProcessingApp {
     private Terrain terrain;
     private PopulationOvelhas populationOvelhas;
     private PopulationLobos populationLobos;
+
     private PopulationOurico populationOurico;
+
     private float timer, updateGraphTime;
     private float intervalUpdate=1;
 
@@ -47,8 +49,10 @@ public class TestEcosystemApp  implements IProcessingApp {
         for (int i = 0; i < 2; i++) terrain.majorityRule();
         populationOvelhas = new PopulationOvelhas(p, plt, terrain);
 
+
         populationOurico=new PopulationOurico(p,plt,terrain);
         populationLobos= new PopulationLobos(p,plt,terrain,populationOvelhas, populationOurico);
+
 
         timer=0;
         updateGraphTime =timer+ intervalUpdate;
@@ -63,15 +67,19 @@ public class TestEcosystemApp  implements IProcessingApp {
         timer+=dt;
 
 
+
         terrain.regenerate(this.parent);
         populationOvelhas.update(dt, terrain);
         populationLobos.update(dt,terrain);
         populationOurico.update(dt,terrain);
 
+
         terrain.display(p);
         populationOvelhas.display(p, plt);
         populationLobos.display(p,plt);
+
         populationOurico.display(p,plt);
+
 
         if (timer > updateGraphTime) {
             System.out.println(String.format("Time = %ds", (int) timer));
@@ -82,12 +90,14 @@ public class TestEcosystemApp  implements IProcessingApp {
             System.out.println("");
 
             tg1.plot(timer, populationOvelhas.getNumAnimals());
+
             tg2.plot(timer, populationOurico.getNumAnimals());
             tg3.plot(timer, populationLobos.getNumAnimals());
 
             updateGraphTime = timer + intervalUpdate;
         }
         //  System.out.println("numAnimals = " + populationOvelhas.getNumAnimals());
+
     }
 
     private int[] getColors(PApplet p) {
@@ -99,6 +109,7 @@ public class TestEcosystemApp  implements IProcessingApp {
 
     @Override
     public void mousePressed(PApplet p) {
+
         if (p.mouseButton == PApplet.LEFT) {
             winGraph1[0]= timer;
             winGraph1[1]=timer+timeDuration;
@@ -124,6 +135,7 @@ public class TestEcosystemApp  implements IProcessingApp {
             populationOurico=new PopulationOurico(p,plt,terrain);
             populationLobos= new PopulationLobos(p,plt,terrain,populationOvelhas, populationOurico);
         }
+
 
     }
 

@@ -25,7 +25,9 @@ public class Ovelha extends Animal {
         Patch patch= (Patch) terrain.world2Cell(pos.x,pos.y);
         if (patch.getState() == WorldConstants.PatchType.FOOD.ordinal()) {
             energy += WorldConstants.ENERGY_FROM_PLANT;
+
             patch.setFertile(this.parent);
+
         }
     }
 
@@ -49,4 +51,6 @@ public class Ovelha extends Animal {
     public boolean die() {
         return super.die();
     }
+
 }
+

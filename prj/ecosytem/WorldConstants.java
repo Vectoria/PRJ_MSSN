@@ -14,6 +14,7 @@ public class WorldConstants {
         EMPTY, LAVA, FERTILE, WATER, FOOD  //lama
     }
 
+
     public final static double[] PATCH_TYPE_PROB = {0.f, 0.2f, 0.f, 0.2f, 0.6f};
     public final static int NSTATES = PatchType.values().length;
     public static int[][] TERRAIN_COLORS = {
@@ -24,6 +25,7 @@ public class WorldConstants {
     public static String[] TERRAIN_PATHS = {
             "data/small_empty.png", "data/small_lava.jpg", "data/small_fertile.png", "data/small_water.jpg",
             "data/small_food.png"
+
     };
     public final static float[] REGENERATION_TIME = {10.f, 20.f}; //seconds
 
@@ -34,8 +36,10 @@ public class WorldConstants {
     public final static float INI_OVELHA_ENERGY = 10f;
     public final static float ENERGY_FROM_PLANT = 4f;
     public final static float OVELHA_ENERGY_TO_REPRODUCE = 25f;
+
     public static int[] OVELHA_COLOR = {255, 255, 255};
     public static String OVELHA_PATH = "data/small_sheep.png";
+
 
     //Lobo
 
@@ -45,6 +49,7 @@ public class WorldConstants {
     public final static float INI_LOBO_ENERGY = 14f;
     public final static float LOBO_ENERGY_TO_REPRODUCE = 25f;
     public final static float ENERGY_FROM_HUNT = 12f;
+
     public static int[] LOBO_COLOR = {0, 0, 0};
     public static String LOBO_PATH = "data/small_wolf.png";
 
@@ -58,4 +63,5 @@ public class WorldConstants {
     public final static float DEFENSE_HUNT = -5f;
     public static int[] OURICO_COLOR = {255, 255, 255};
     public static String OURICO_PATH = "data/small_hedgehog.png";
+
 }
