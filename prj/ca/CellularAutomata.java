@@ -16,10 +16,7 @@ public class CellularAutomata {
     protected float cellWidth, cellHeight; // Pixels
     protected float xmin, ymin;
     private SubPlot plt;
-
     protected PApplet parent;
-
-
     public CellularAutomata(PApplet p, SubPlot plt, int nrows, int ncols, int nStates, int radiusNeigh) {
         this.parent = p;
         this.nrows = nrows;
@@ -66,9 +63,7 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState((int) ((nStates) * Math.random()));
-
-            //    cells[i][j].setImg(this.parent);
-
+                cells[i][j].setImg(this.parent);
             }
         }
     }
@@ -78,9 +73,7 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState(crg.getRandomClass());
-
-             //   cells[i][j].setImg(this.parent);
-
+                cells[i][j].setImg(this.parent);
             }
         }
     }
