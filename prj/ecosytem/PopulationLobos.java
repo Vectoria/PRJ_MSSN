@@ -7,8 +7,10 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.Comparator;
+
 import java.util.List;
 
 public class PopulationLobos {
@@ -19,7 +21,9 @@ public class PopulationLobos {
     private Boid alvo;
     private PImage img;
 
+
     public PopulationLobos(PApplet parent, SubPlot plt, Terrain terrain, PopulationOvelhas pO, PopulationOurico populationOurico) {
+
         window = plt.getWindow();
         allAnimals = new ArrayList<Animal>();
 
@@ -28,7 +32,9 @@ public class PopulationLobos {
         for (int i = 0; i < WorldConstants.INI_LOBO_POPULATION; i++) {
             PVector pos = new PVector(parent.random((float) window[0], (float) window[1]), parent.random((float) window[2], (float) window[3]));
             int color = parent.color(WorldConstants.LOBO_COLOR[0], WorldConstants.LOBO_COLOR[1], WorldConstants.LOBO_COLOR[2]);
+
             Animal a = new Lobo(pos, WorldConstants.LOBO_MASS, WorldConstants.LOBO_SIZE, color, parent, plt, pO, populationOurico);
+
 
             a.addBehavior(new Wander(1));
             //   a.addBehavior(new AvoidObstacle(0));
@@ -40,7 +46,9 @@ public class PopulationLobos {
             a.setEye(eye);
             allAnimals.add(a);
         }
+
         img = parent.loadImage(WorldConstants.LOBO_PATH);
+
     }
 
     public void update(float dt, Terrain terrain) {
@@ -49,8 +57,11 @@ public class PopulationLobos {
         energy_consumption(dt, terrain);
         reproduce(mutate);
         die();
+
         lookAround();
+
     }
+
 
     private void lookAround(){
         // ordenar targets por distância, ordem crescente
@@ -102,6 +113,7 @@ public class PopulationLobos {
         // aumentar avoid se for lava
         // aumentar pursuit se for sheep
     }
+
 
     private void move(Terrain terrain, float dt) {
         for (Animal a : allAnimals) a.applyBehaviors(dt);

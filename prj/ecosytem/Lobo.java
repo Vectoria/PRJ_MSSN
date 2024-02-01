@@ -10,19 +10,25 @@ import java.util.List;
 
 public class Lobo extends Animal{
 
+
     private PopulationOvelhas pO;
     private PopulationOurico populationOurico;
+
     private PApplet parent;
     private SubPlot plt;
     private Boid alvo;
     private List<Body> allTrackingBodies;
+
     public Lobo(PVector pos, float mass, float radius, int color, PApplet parent, SubPlot plt, PopulationOvelhas pO, PopulationOurico populationOurico) {
+
         super(pos,mass,radius,color,parent,plt);
         this.parent=parent;
         this.plt=plt;
         energy=WorldConstants.INI_LOBO_ENERGY;
         this.pO=pO;
+
         this.populationOurico=populationOurico;
+
         /*
         allTrackingBodies = new ArrayList<Body>();
         alvo= pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals()));
@@ -32,12 +38,16 @@ public class Lobo extends Animal{
         Eye eye=new Eye(this,allTrackingBodies);
         setEye(eye);*/
     }
+<
     public Lobo(Lobo prey,boolean mutate, PApplet parent, SubPlot plt,PopulationOvelhas pO, PopulationOurico populationOurico){
+
         super(prey,mutate,parent,plt);
         this.parent=parent;
         this.plt=plt;
         this.pO=pO;
+
         this.populationOurico=populationOurico;
+
         energy=WorldConstants.INI_LOBO_ENERGY;
        /* allTrackingBodies = new ArrayList<Body>();
         alvo= pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals()));
@@ -55,7 +65,9 @@ public class Lobo extends Animal{
         Animal child=null;
         if(energy>WorldConstants.LOBO_ENERGY_TO_REPRODUCE){
             energy-=WorldConstants.INI_LOBO_ENERGY;
+
             child=new Lobo(this,mutate, parent,plt,pO, populationOurico);
+
             if(mutate) child.mutateBehaviors();
         }
         return child;
@@ -65,6 +77,7 @@ public class Lobo extends Animal{
     public void eat(Terrain terrain){
         for (Animal prey : pO.getAllAnimals()) {
             if (PVector.dist(this.pos, prey.pos) <= 0.3) {
+
                 prey.energy = 0;
                 energy += WorldConstants.ENERGY_FROM_HUNT;
                 /*
@@ -77,6 +90,7 @@ public class Lobo extends Animal{
         for (Animal prey : populationOurico.getAllAnimals()) {
             if (PVector.dist(this.pos, prey.pos) <= 0.3) {
                 energy += WorldConstants.DEFENSE_HUNT;
+
                 prey.energy = 0;
                 /*
                 allTrackingBodies.add(pO.getAllAnimals().get((int) parent.random(0,pO.getNumAnimals())));
