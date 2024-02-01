@@ -31,6 +31,7 @@ public class MajorityCA extends CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 boolean changed = ((MajorityCell) cells[i][j]).applyMajorityRule();
+                cells[i][j].setImg(parent);
                 if (changed)
                     anyChanged = true;
             }

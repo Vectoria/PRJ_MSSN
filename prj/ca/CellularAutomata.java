@@ -17,8 +17,11 @@ public class CellularAutomata {
     protected float xmin, ymin;
     private SubPlot plt;
 
-    public CellularAutomata(PApplet p, SubPlot plt, int nrows, int ncols, int nStates, int radiusNeigh) {
+    protected PApplet parent;
 
+
+    public CellularAutomata(PApplet p, SubPlot plt, int nrows, int ncols, int nStates, int radiusNeigh) {
+        this.parent = p;
         this.nrows = nrows;
         this.ncols = ncols;
         this.nStates = nStates;
@@ -33,7 +36,7 @@ public class CellularAutomata {
         cellHeight = bb[3] / nrows;
         this.plt = plt;
         createCells();
-        setStateColors(p);
+        setStateColors(this.parent);
     }
 
     public void setStateColors(PApplet p) {
@@ -53,7 +56,7 @@ public class CellularAutomata {
     protected void createCells() {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
-                cells[i][j] = new Cell(this, i, j);
+                cells[i][j] = new Cell(this.parent, this, i, j);
             }
         }
         setMooreNeighbors();
@@ -63,6 +66,9 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState((int) ((nStates) * Math.random()));
+
+            //    cells[i][j].setImg(this.parent);
+
             }
         }
     }
@@ -72,6 +78,9 @@ public class CellularAutomata {
         for (int i = 0; i < nrows; i++) {
             for (int j = 0; j < ncols; j++) {
                 cells[i][j].setState(crg.getRandomClass());
+
+             //   cells[i][j].setImg(this.parent);
+
             }
         }
     }
@@ -141,5 +150,4 @@ public class CellularAutomata {
         }
     }
 }
-
 

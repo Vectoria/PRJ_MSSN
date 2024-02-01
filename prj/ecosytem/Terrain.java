@@ -32,6 +32,13 @@ public class Terrain extends MajorityCA {
             }
         }
     }
+    public void regenerate(PApplet p) {
+        for (int i=0; i < nrows; i++) {
+            for (int j=0; j < ncols; j++) {
+                ((Patch)cells[i][j]).regenerate(p);
+            }
+        }
+    }
 
     public List<Body> getObstacles() {
         List<Body> bodies = new ArrayList<Body>();

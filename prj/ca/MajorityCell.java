@@ -1,6 +1,7 @@
 package prj.ca;
 
 import prj.tools.Histogram;
+import processing.core.PApplet;
 
 public class MajorityCell extends Cell {
 
@@ -13,9 +14,11 @@ public class MajorityCell extends Cell {
     public void computeHistogram() {
         Cell[] neighbors = getNeighbors();
         int[] data = new int[neighbors.length];
-        for (int i=0; i<neighbors.length; i++)
+        for (int i=0; i<neighbors.length; i++) {
             data[i] = neighbors[i].getState();
+        }
         hist = new Histogram(data, ca.nStates);
+
     }
 
     public boolean applyMajorityRule() {
@@ -28,4 +31,3 @@ public class MajorityCell extends Cell {
         return changed;
     }
 }
-

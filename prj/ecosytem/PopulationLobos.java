@@ -7,6 +7,10 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.Comparator;
+
 import java.util.List;
 
 public class PopulationLobos {
@@ -17,7 +21,9 @@ public class PopulationLobos {
     private Boid alvo;
     private PImage img;
 
-    public PopulationLobos(PApplet parent, SubPlot plt, Terrain terrain, PopulationOvelhas pO) {
+
+    public PopulationLobos(PApplet parent, SubPlot plt, Terrain terrain, PopulationOvelhas pO, PopulationOurico populationOurico) {
+
         window = plt.getWindow();
         allAnimals = new ArrayList<Animal>();
 
@@ -26,7 +32,9 @@ public class PopulationLobos {
         for (int i = 0; i < WorldConstants.INI_LOBO_POPULATION; i++) {
             PVector pos = new PVector(parent.random((float) window[0], (float) window[1]), parent.random((float) window[2], (float) window[3]));
             int color = parent.color(WorldConstants.LOBO_COLOR[0], WorldConstants.LOBO_COLOR[1], WorldConstants.LOBO_COLOR[2]);
-            Animal a = new Lobo(pos, WorldConstants.LOBO_MASS, WorldConstants.LOBO_SIZE, color, parent, plt, pO);
+
+            Animal a = new Lobo(pos, WorldConstants.LOBO_MASS, WorldConstants.LOBO_SIZE, color, parent, plt, pO, populationOurico);
+
 
             a.addBehavior(new Wander(1));
             //   a.addBehavior(new AvoidObstacle(0));
@@ -38,7 +46,9 @@ public class PopulationLobos {
             a.setEye(eye);
             allAnimals.add(a);
         }
-        img = parent.loadImage("data/small_wolf.png");
+
+        img = parent.loadImage(WorldConstants.LOBO_PATH);
+
     }
 
     public void update(float dt, Terrain terrain) {
@@ -47,7 +57,62 @@ public class PopulationLobos {
         energy_consumption(dt, terrain);
         reproduce(mutate);
         die();
+        lookAround()
     }
+
+
+    private void lookAround(){
+        // ordenar targets por distância, ordem crescente
+        for (Animal animal : allAnimals) {
+            float minDistance = Float.MAX_VALUE;
+
+            for (Body body : allTrackingBodies) {
+                float distance = PVector.dist(animal.pos, body.pos);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                }
+            }
+
+            Collections.sort(allTrackingBodies, Comparator.comparingDouble(body -> PVector.dist(animal.pos, body.pos)));
+            Body target= allTrackingBodies.get(0);
+            if(target instanceof Boid){
+                for (Behavior behavior : animal.getBehaviors()) {
+                    if (behavior instanceof Arrive) {
+                        behavior.setWeight(4);
+                    }
+                    if (behavior instanceof AvoidObstacle) {
+                        behavior.setWeight(1);
+                    }
+                }
+
+            }
+            else{
+                for (Behavior behavior : animal.getBehaviors()) {
+                    if (behavior instanceof AvoidObstacle) {
+                        behavior.setWeight(10);
+                    }
+                    if (behavior instanceof Arrive) {
+                        behavior.setWeight(1);
+                    }
+                }
+            }
+
+            Eye eye = new Eye(animal, allTrackingBodies);
+            animal.setEye(eye);
+
+            if(PVector.dist(target.pos,animal.pos)==0){
+                allTrackingBodies.remove(0);
+            }
+           // System.out.println(target);
+
+        }
+
+        // ver se é lava ou sheep
+        // aumentar avoid se for lava
+        // aumentar pursuit se for sheep
+    }
+
 
     private void move(Terrain terrain, float dt) {
         for (Animal a : allAnimals) a.applyBehaviors(dt);
